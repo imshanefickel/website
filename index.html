@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Video Gallery</title>
+    <title>Shane LaRue - Video Gallery</title>
     <style>
         body { font-family: system-ui, sans-serif; background: #111; color: #fff; text-align: center; padding: 20px; }
         h1 { margin-bottom: 10px; }
@@ -22,7 +22,6 @@
 
     <script>
         // 🌟 ADD YOUR VIDEOS AND TITLES HERE 🌟
-        // Just copy an entire block { id: '...', title: '...' } to add more!
         const playlist = [
             { 
                 id: 'C_IrPUOQeeA', 
@@ -43,10 +42,13 @@
             const card = document.createElement('div');
             card.className = 'video-card';
             
-            // 🌟 NOTE: This line below MUST start and end with backticks ` not standard quotes ' 🌟
             card.innerHTML = `
                 <div class="video-wrapper">
-                    <iframe src="https://youtube.com{video.id}" allowfullscreen></iframe>
+                    <iframe 
+                        src="https://youtube.com{video.id}" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
                 <h3 class="video-title">${video.title}</h3>
             `;
