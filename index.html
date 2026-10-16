@@ -20,42 +20,44 @@
 
     <div class="gallery" id="videoGallery"></div>
 
-    <script>
-        // 🌟 ADD YOUR VIDEOS AND TITLES HERE 🌟
-        const playlist = [
-            { 
-                id: 'C_IrPUOQeeA', 
-                title: 'Video 1' 
-            },
-            { 
-                id: 'WpgJzFv5mi8', 
-                title: 'video 2' 
-            },
-            { 
-                id: 'F2tw_g-nicw', 
-                title: 'PSY - GANGNAM STYLE (강남스타일) M/V' 
-            }
-        ];
+   
+<script>
+    const playlist = [
+        {
+            id: 'C_IrPUOQeeA',
+            title: 'Video 1'
+        },
+        {
+            id: 'WpgJzFv5mi8',
+            title: 'Video 2'
+        },
+        {
+            id: 'F2tw_g-nicw',
+            title: 'PSY - GANGNAM STYLE (강남스타일) M/V'
+        }
+    ];
 
-        const gallery = document.getElementById('videoGallery');
-        playlist.forEach(video => {
-            const card = document.createElement('div');
-            card.className = 'video-card';
-            
-            // This entire block must use backticks `
-            card.innerHTML = `
-                <div class="video-wrapper">
-                    <iframe 
-                        src="https://youtube.com{video.id}" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <h3 class="video-title">${video.title}</h3>
-            `;
-            
-            gallery.appendChild(card);
-        });
-    </script>
+    const gallery = document.getElementById('videoGallery');
+
+    playlist.forEach(video => {
+        const card = document.createElement('div');
+        card.className = 'video-card';
+
+        card.innerHTML = `
+            <div class="video-wrapper">
+                <iframe
+                    src="https://www.youtube.com/embed/${video.id}"
+                    title="${video.title}"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <h3 class="video-title">${video.title}</h3>
+        `;
+
+        gallery.appendChild(card);
+    });
+</script>
+
 </body>
 </html>
