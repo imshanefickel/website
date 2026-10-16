@@ -2,18 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My YouTube Videos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Video Gallery</title>
     <style>
-        body { font-family: sans-serif; text-align: center; background: #111; color: #fff; padding: 40px; }
-        .video-container { margin: 20px auto; max-width: 640px; }
-        iframe { width: 100%; height: 360px; border: none; border-radius: 8px; }
+        body { font-family: system-ui, sans-serif; background: #111; color: #fff; text-align: center; padding: 20px; }
+        h1 { margin-bottom: 10px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .video-card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-title { padding: 15px; font-size: 1.1rem; font-weight: 600; text-align: left; color: #f0f0f0; line-height: 1.4; margin: 0; flex-grow: 1; }
     </style>
 </head>
 <body>
+
     <h1>My Video Gallery</h1>
-    <div class="video-container">
-        <!-- Replace PASTE_YOUTUBE_ID_HERE with your actual YouTube video ID -->
-        <iframe src="https://www.youtube.com/watch?v=-4dro8vd6f8" allowfullscreen></iframe>
-    </div>
+
+    <div class="gallery" id="videoGallery"></div>
+
+    <script>
+        // 🌟 ADD YOUR VIDEOS AND TITLES HERE 🌟
+        // Just copy an entire block { id: '...', title: '...' } to add more!
+        const playlist = [
+            { 
+                id: 'VpH2bcdg348', 
+                title: 'Rick Astley - Never Gonna Give You Up (Official Music Video)' 
+            },
+            { 
+                id: 'WpgJzFv5mi8', 
+                title: 'Despacito - Luis Fonsi ft. Daddy Yankee' 
+            },
+            { 
+                id: 'F2tw_g-nicw', 
+                title: 'PSY - GANGNAM STYLE (강남스타일) M/V' 
+            }
+        ];
+
+        const gallery = document.getElementById('videoGallery');
+        playlist.forEach(video => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.innerHTML = `
+                <div class="video-wrapper">
+                    <iframe src="https://youtube.com{video.id}" allowfullscreen></iframe>
+                </div>
+                <h3 class="video-title">${video.title}</h3>
+            `;
+            gallery.appendChild(card);
+        });
+    </script>
 </body>
 </html>
