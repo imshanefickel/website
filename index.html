@@ -38,13 +38,18 @@
             }
         ];
 
-        const gallery = document.getElementById('videoGallery');
+      const gallery = document.getElementById('videoGallery');
         playlist.forEach(video => {
             const card = document.createElement('div');
             card.className = 'video-card';
             card.innerHTML = `
                 <div class="video-wrapper">
-                    <iframe src="https://youtube.com{video.id}" allowfullscreen></iframe>
+                    <iframe 
+                        src="https://youtube.com{video.id}?rel=0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        sandbox="allow-scripts allow-same-origin allow-presentation"
+                        allowfullscreen>
+                    </iframe>
                 </div>
                 <h3 class="video-title">${video.title}</h3>
             `;
