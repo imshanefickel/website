@@ -53,12 +53,14 @@
 
   /* Featured film: poster + samples */
   .feature{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:64px}
+  .feature + .feature{padding-top:64px;border-top:1px solid var(--line)}
   .poster{width:100%;max-width:380px;aspect-ratio:2/3;border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,#efe9df,#e4dccf);border:1px solid var(--line);box-shadow:0 12px 40px rgba(60,40,10,.14);display:grid;place-items:center;color:var(--muted);font-size:.9rem}
   .poster img{width:100%;height:100%;object-fit:cover}
   .feature h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:1.9rem;margin-top:22px;line-height:1.2}
   .feature > p{color:var(--muted);font-size:.92rem}
   .samples{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;max-width:860px;margin-top:24px}
-  .sample{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 14px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 2px 10px rgba(60,40,10,.04);transition:border-color .2s}
+  .sample{background:transparent;border:1px solid var(--line);border-radius:var(--radius);padding:18px 14px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 1px 6px rgba(60,40,10,.05);transition:border-color .2s,box-shadow .2s}
+  .sample:hover{box-shadow:0 4px 14px rgba(60,40,10,.08)}
   .sample.playing{border-color:var(--accent)}
   .sample h4{font-size:.92rem;font-weight:600;line-height:1.3}
   .sample .bar{width:100%;margin-top:4px}
@@ -152,12 +154,7 @@
   <section id="film">
     <div class="wrap">
       <div class="sec-head"><div class="eyebrow">Screen work</div><h2>Film & TV</h2></div>
-      <div class="feature">
-        <div class="poster" id="poster"></div>
-        <h3 id="feature-title"></h3>
-        <p id="feature-note"></p>
-        <div class="samples" id="samples"></div>
-      </div>
+      <div id="features"></div>
       <div class="grid" id="videos"></div>
     </div>
   </section>
@@ -209,34 +206,38 @@ const SITE = {
   eyebrow: "Film Composer & Songwriter",
   tagline: "Songs and music for film, television, and people.",
 
-  // Featured film — poster image + four sample cues shown under it
-  feature: {
-    poster: "IMAGES/poster.jpg",   // e.g. "images/poster.jpg" — leave "" for a placeholder
-    title: "For The Love Of Strippers",
-    note: "Original score · LoFi Hip Hop",
-    samples: [
-      { title: "Kickoff",   file: "AUDIO/Cue-1-opening.mp3" },
-      { title: "Turning Point",     file: "AUDIO/Cue-3-Turning-Point.mp3" },
-      { title: "Boundaries",    file: "AUDIO/Cue-7-Boundaries.mp3" },
-      { title: "Backstory",   file: "AUDIO/Cue-9-Backstory.mp3" },
-    ],
-      feature: {
-    poster: "IMAGES/poster.jpg",   // e.g. "images/poster.jpg" — leave "" for a placeholder
-    title: "For The Love Of Strippers",
-    note: "Original score · LoFi Hip Hop",
-    samples: [
-      { title: "Kickoff",   file: "AUDIO/Cue-1-opening.mp3" },
-      { title: "Turning Point",     file: "AUDIO/Cue-3-Turning-Point.mp3" },
-      { title: "Boundaries",    file: "AUDIO/Cue-7-Boundaries.mp3" },
-      { title: "Backstory",   file: "AUDIO/Cue-9-Backstory.mp3" },
-    ],
-  },
+  // Featured films — each one shows a poster with four sample cues under it.
+  // To add another film, copy one { ... }, block (from { to },) and paste it below the last one.
+  features: [
+    {
+      poster: "IMAGES/poster.jpg",
+      title: "For The Love Of Strippers",
+      note: "Original score · LoFi Hip Hop",
+      samples: [
+        { title: "Kickoff",       file: "AUDIO/Cue-1-opening.mp3" },
+        { title: "Turning Point", file: "AUDIO/Cue-3-Turning-Point.mp3" },
+        { title: "Boundaries",    file: "AUDIO/Cue-7-Boundaries.mp3" },
+        { title: "Backstory",     file: "AUDIO/Cue-9-Backstory.mp3" },
+      ],
+    },
+    {
+      poster: "IMAGES/poster-2.jpg",
+      title: "Second Film Title",
+      note: "Original score · Genre",
+      samples: [
+        { title: "Cue One",   file: "AUDIO/film2-cue-1.mp3" },
+        { title: "Cue Two",   file: "AUDIO/film2-cue-2.mp3" },
+        { title: "Cue Three", file: "AUDIO/film2-cue-3.mp3" },
+        { title: "Cue Four",  file: "AUDIO/film2-cue-4.mp3" },
+      ],
+    },
+  ],
 
   // Film & TV — any YouTube link works (watch, youtu.be, or shorts)
   videos: [
     { title: "Unit 55 — Short Film", note: "Short film", url: "https://youtu.be/jlxsHxvU2aQ" },
-    { title: "Bumble",              note: "Commercial",           url: "https://www.youtube.com/watch?v=-4dro8vd6f8" },
-    { title: "Composer Reel",              note: "Highlights",           url: "https://youtu.be/dQw4w9WgXcQ" },
+    { title: "Bumble",               note: "Commercial", url: "https://www.youtube.com/watch?v=-4dro8vd6f8" },
+    { title: "Composer Reel",        note: "Highlights", url: "https://youtu.be/dQw4w9WgXcQ" },
   ],
 
   // Audio samples — put MP3 files in the /audio folder of your repo
@@ -295,23 +296,27 @@ document.querySelectorAll('.video .frame').forEach(f => f.addEventListener('clic
   f.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${f.dataset.id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
 }));
 
-// Featured film
-const F = SITE.feature;
-$('#poster').innerHTML = F.poster ? `<img src="${esc(F.poster)}" alt="${esc(F.title)} poster">` : 'Poster image here';
-$('#feature-title').textContent = F.title;
-$('#feature-note').textContent = F.note || '';
+// Featured films
+const FEATURES = SITE.features || (SITE.feature ? [SITE.feature] : []);
+$('#features').innerHTML = FEATURES.map(F => `
+  <div class="feature">
+    <div class="poster">${F.poster ? `<img src="${esc(F.poster)}" alt="${esc(F.title)} poster" onerror="this.replaceWith('Poster image here')">` : 'Poster image here'}</div>
+    <h3>${esc(F.title)}</h3>
+    <p>${esc(F.note || '')}</p>
+    <div class="samples">${F.samples.map(t => `
+      <div class="sample player">
+        <button class="pbtn" aria-label="Play ${esc(t.title)}">${PLAY}</button>
+        <h4>${esc(t.title)}</h4>
+        <div class="bar"><i></i></div>
+        <div class="time">0:00</div>
+      </div>`).join('')}
+    </div>
+  </div>`).join('');
 
 // Audio players — featured samples + Listen section share one player (one plays at a time)
 const audio = new Audio(); audio.preload = 'none';
 let current = -1;
 const fmt = t => isFinite(t) ? `${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')}` : '0:00';
-$('#samples').innerHTML = F.samples.map(t => `
-  <div class="sample player">
-    <button class="pbtn" aria-label="Play ${esc(t.title)}">${PLAY}</button>
-    <h4>${esc(t.title)}</h4>
-    <div class="bar"><i></i></div>
-    <div class="time">0:00</div>
-  </div>`).join('');
 $('#tracks').innerHTML = SITE.tracks.map(t => `
   <div class="track player">
     <button class="pbtn" aria-label="Play ${esc(t.title)}">${PLAY}</button>
@@ -322,7 +327,7 @@ $('#tracks').innerHTML = SITE.tracks.map(t => `
     </div>
     <div class="time">0:00</div>
   </div>`).join('');
-const ALL = [...F.samples, ...SITE.tracks];
+const ALL = [...FEATURES.flatMap(f => f.samples), ...SITE.tracks];
 const rows = [...document.querySelectorAll('.player')];
 function setUI(i, playing){
   rows.forEach((r,k) => { r.classList.toggle('playing', k===i && playing); r.querySelector('.pbtn').innerHTML = (k===i && playing) ? PAUSE : PLAY; });
