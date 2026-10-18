@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shane LaRue — Composer & Songwriter</title>
+<meta name="description" content="Film composer and songwriter. Listen to scores, songs and reels.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f8f5ef; --bg2:#f0ebe2; --card:#ffffff; --line:#e4ddd1;
+    --text:#1d1b18; --muted:#6e685f; --accent:#a8702a; --accent2:#c0873b;
+    --radius:14px; --max:1100px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+  /* Nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(248,245,239,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand-wrap{display:flex;align-items:baseline;gap:14px;text-decoration:none;min-width:0}
+  .brand{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600;letter-spacing:.02em;white-space:nowrap}
+  .role{color:var(--accent);text-transform:uppercase;letter-spacing:.2em;font-size:.68rem;font-weight:600;white-space:nowrap}
+  section#film{border-top:0;padding-top:56px}
+  .links{display:flex;gap:26px;list-style:none}
+  .links a{text-decoration:none;color:var(--muted);font-size:.92rem;transition:color .2s}
+  .links a:hover{color:var(--text)}
+  .menu-btn{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+
+  /* Hero */
+  .hero{min-height:78vh;display:flex;align-items:center;position:relative;overflow:hidden;
+    background:radial-gradient(ellipse at 70% 30%,rgba(200,150,80,.18),transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(130,150,190,.16),transparent 55%)}
+  .hero .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.25em;font-size:.78rem;font-weight:600}
+  .hero h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(3rem,9vw,6.5rem);line-height:1;margin:14px 0 18px}
+  .hero p{color:var(--muted);max-width:540px;font-size:1.1rem}
+  .cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--line);transition:.2s}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn.primary:hover{background:var(--accent2)}
+  .btn:not(.primary):hover{border-color:var(--muted)}
+
+  /* Sections */
+  section{padding:90px 0;border-top:1px solid var(--line)}
+  .sec-head{margin-bottom:36px}
+  .sec-head .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.2em;font-size:.75rem;font-weight:600}
+  .sec-head h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.1;margin-top:6px}
+
+  /* Featured film: poster + samples */
+  .feature{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:64px}
+  .poster{width:100%;max-width:380px;aspect-ratio:2/3;border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,#efe9df,#e4dccf);border:1px solid var(--line);box-shadow:0 12px 40px rgba(60,40,10,.14);display:grid;place-items:center;color:var(--muted);font-size:.9rem}
+  .poster img{width:100%;height:100%;object-fit:cover}
+  .feature h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:1.9rem;margin-top:22px;line-height:1.2}
+  .feature > p{color:var(--muted);font-size:.92rem}
+  .samples{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;max-width:860px;margin-top:24px}
+  .sample{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 14px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 2px 10px rgba(60,40,10,.04);transition:border-color .2s}
+  .sample.playing{border-color:var(--accent)}
+  .sample h4{font-size:.92rem;font-weight:600;line-height:1.3}
+  .sample .bar{width:100%;margin-top:4px}
+  .sample .time{min-width:0;text-align:center}
+
+  /* Videos */
+  .grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+  .video{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 14px rgba(60,40,10,.05)}
+  .video .frame{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer}
+  .video .frame img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .25s}
+  .video .frame:hover img{opacity:1}
+  .video .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .play-overlay{position:absolute;inset:0;display:grid;place-items:center}
+  .play-overlay span{width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,.94);display:grid;place-items:center;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .2s}
+  .video .frame:hover .play-overlay span{transform:scale(1.08)}
+  .video .meta{padding:16px 18px}
+  .video h3{font-size:1.02rem;font-weight:600}
+  .video p{color:var(--muted);font-size:.88rem}
+
+  /* Audio samples */
+  .tracks{display:flex;flex-direction:column;gap:12px}
+  .track{box-shadow:0 2px 10px rgba(60,40,10,.04);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;transition:border-color .2s}
+  .track.playing{border-color:var(--accent)}
+  .pbtn{width:48px;height:48px;border-radius:50%;border:0;background:var(--accent);color:#fff;cursor:pointer;display:grid;place-items:center;flex-shrink:0;transition:transform .15s,background .2s}
+  .pbtn:hover{background:var(--accent2);transform:scale(1.06)}
+  .pbtn svg{width:18px;height:18px}
+  .tinfo h3{font-size:1rem;font-weight:600}
+  .tinfo .sub{color:var(--muted);font-size:.85rem}
+  .bar{height:4px;background:var(--line);border-radius:4px;margin-top:10px;cursor:pointer;position:relative}
+  .bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent);border-radius:4px}
+  .time{color:var(--muted);font-size:.82rem;font-variant-numeric:tabular-nums;min-width:86px;text-align:right}
+  .tag{display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);border:1px solid rgba(168,112,42,.35);border-radius:999px;padding:1px 8px;margin-left:8px;vertical-align:2px}
+
+  /* Spotify */
+  .spot-grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+  .spot-grid iframe{width:100%;height:352px;border:0;border-radius:var(--radius);background:var(--card)}
+
+  /* About */
+  .about{display:grid;grid-template-columns:320px 1fr;gap:50px;align-items:start}
+  .about img{border-radius:var(--radius);aspect-ratio:4/5;object-fit:cover;width:100%;background:var(--card)}
+  .about .ph{aspect-ratio:4/5;border-radius:var(--radius);background:linear-gradient(135deg,#efe9df,#e4dccf);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);font-size:.85rem}
+  .about p{color:#3a3631;margin-bottom:16px;font-size:1.05rem}
+  .credits{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
+  .credits span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.85rem;color:var(--muted)}
+
+  /* Contact */
+  .contact{text-align:center}
+  .contact h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(2.4rem,6vw,4rem)}
+  .contact p{color:var(--muted);margin:10px auto 28px;max-width:480px}
+  .socials{display:flex;justify-content:center;gap:12px;margin-top:22px;flex-wrap:wrap}
+
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.85rem;text-align:center}
+
+  @media (max-width:760px){
+    .links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg2);border-bottom:1px solid var(--line)}
+    .links.open{display:flex}
+    .links a{display:block;padding:14px 20px}
+    .menu-btn{display:block}
+    .brand-wrap{flex-direction:column;align-items:flex-start;gap:0;line-height:1.15}
+    .brand{font-size:1.3rem}
+    .role{font-size:.6rem;letter-spacing:.16em}
+    section#film{padding-top:40px}
+    .about{grid-template-columns:1fr}
+    .about img,.about .ph{max-width:300px}
+    .grid,.spot-grid{grid-template-columns:1fr}
+    .track{grid-template-columns:auto 1fr;gap:14px}
+    .track .time{grid-column:2;text-align:left;margin-top:-6px}
+    .samples{grid-template-columns:repeat(2,1fr)}
+    .poster{max-width:300px}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand-wrap"><span class="brand" id="brand">Shane LaRue</span><span class="role" id="role">Film Composer &amp; Songwriter</span></a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+    <ul class="links" onclick="this.classList.remove('open')">
+      <li><a href="#film">Film & TV</a></li>
+      <li><a href="#playlists">Playlists</a></li>
+      <li><a href="#listen">Listen</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <section id="film">
+    <div class="wrap">
+      <div class="sec-head"><div class="eyebrow">Screen work</div><h2>Film & TV</h2></div>
+      <div class="feature">
+        <div class="poster" id="poster"></div>
+        <h3 id="feature-title"></h3>
+        <p id="feature-note"></p>
+        <div class="samples" id="samples"></div>
+      </div>
+      <div class="grid" id="videos"></div>
+    </div>
+  </section>
+
+  <section id="playlists">
+    <div class="wrap">
+      <div class="sec-head"><div class="eyebrow">Streaming</div><h2>On Spotify</h2></div>
+      <div class="spot-grid" id="spotify"></div>
+    </div>
+  </section>
+
+  <section id="listen">
+    <div class="wrap">
+      <div class="sec-head"><div class="eyebrow">Samples</div><h2>Listen</h2></div>
+      <div class="tracks" id="tracks"></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div id="photo"></div>
+      <div>
+        <div class="sec-head" style="margin-bottom:22px"><div class="eyebrow">Bio</div><h2>About</h2></div>
+        <div id="bio"></div>
+        <div class="credits" id="credits"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Let's make something.</h2>
+      <p id="contact-blurb"></p>
+      <a class="btn primary" id="email-btn">Email me</a>
+      <div class="socials" id="socials"></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap" id="footer"></div></footer>
+
+<script>
+/* =====================================================================
+   ✏️  EDIT YOUR CONTENT HERE — this is the only part you need to change.
+   Paste full YouTube / Spotify links; the page figures out the rest.
+   ===================================================================== */
+const SITE = {
+  name: "Shane LaRue",
+  eyebrow: "Film Composer & Songwriter",
+  tagline: "Songs and music for film, television, and people.",
+
+  // Featured film — poster image + four sample cues shown under it
+  feature: {
+    poster: "",   // e.g. "images/poster.jpg" — leave "" for a placeholder
+    title: "Film Title",
+    note: "Original score · 2026",
+    samples: [
+      { title: "Main Titles",   file: "audio/main-titles.mp3" },
+      { title: "The Chase",     file: "audio/the-chase.mp3" },
+      { title: "Love Theme",    file: "audio/love-theme.mp3" },
+      { title: "End Credits",   file: "audio/end-credits.mp3" },
+    ],
+  },
+
+  // Film & TV — any YouTube link works (watch, youtu.be, or shorts)
+  videos: [
+    { title: "Project Title — Main Theme", note: "Feature film · 2026", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+    { title: "Composer Reel",              note: "Highlights",           url: "https://youtu.be/dQw4w9WgXcQ" },
+  ],
+
+  // Audio samples — put MP3 files in the /audio folder of your repo
+  tracks: [
+    { title: "Opening Titles", sub: "From 'Project Name' (2026)", tag: "Score", file: "audio/opening-titles.mp3" },
+    { title: "Song Title",     sub: "Written & produced by Shane LaRue", tag: "Song", file: "audio/song-title.mp3" },
+    { title: "Tension Cue",    sub: "Thriller underscore demo", tag: "Demo", file: "audio/tension-cue.mp3" },
+  ],
+
+  // Spotify — playlist, album, artist or track links all work
+  spotify: [
+    "https://open.spotify.com/playlist/3ANhiVi60nyelbW1qjMmwT",
+  ],
+
+  photo: "",   // e.g. "images/headshot.jpg" — leave "" for a placeholder
+  bio: [
+    "Write a short paragraph about who you are and the kind of music you make.",
+    "Add a second paragraph about notable projects, collaborators or training.",
+  ],
+  credits: ["Film Title", "Series Title", "Artist Name", "Festival Selection"],
+
+  email: "you@yourdomain.com",
+  contactBlurb: "Available for film, TV, games and songwriting collaborations.",
+  socials: [
+    { label: "Instagram", url: "https://instagram.com/" },
+    { label: "IMDb",      url: "https://imdb.com/" },
+    { label: "Spotify",   url: "https://open.spotify.com/" },
+  ],
+};
+/* ===================== end of editable content ===================== */
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const PLAY  = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+const PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>';
+
+// Header & hero
+document.title = `${SITE.name} — ${SITE.eyebrow}`;
+$('#brand').textContent = SITE.name;
+$('#role').textContent = SITE.eyebrow;
+
+// YouTube (thumbnail first, loads the real player on click — keeps the page fast)
+function ytId(u){ const m = u.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/); return m ? m[1] : u; }
+$('#videos').innerHTML = SITE.videos.map(v => {
+  const id = ytId(v.url);
+  return `<div class="video">
+    <div class="frame" data-id="${esc(id)}" role="button" aria-label="Play ${esc(v.title)}">
+      <img src="https://i.ytimg.com/vi/${esc(id)}/hqdefault.jpg" alt="" loading="lazy">
+      <div class="play-overlay"><span>${PLAY.replace('<svg','<svg style="width:26px;height:26px;color:#a8702a;margin-left:3px"')}</span></div>
+    </div>
+    <div class="meta"><h3>${esc(v.title)}</h3><p>${esc(v.note||'')}</p></div>
+  </div>`;
+}).join('');
+document.querySelectorAll('.video .frame').forEach(f => f.addEventListener('click', () => {
+  if (f.querySelector('iframe')) return;
+  f.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${f.dataset.id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+}));
+
+// Featured film
+const F = SITE.feature;
+$('#poster').innerHTML = F.poster ? `<img src="${esc(F.poster)}" alt="${esc(F.title)} poster">` : 'Poster image here';
+$('#feature-title').textContent = F.title;
+$('#feature-note').textContent = F.note || '';
+
+// Audio players — featured samples + Listen section share one player (one plays at a time)
+const audio = new Audio(); audio.preload = 'none';
+let current = -1;
+const fmt = t => isFinite(t) ? `${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')}` : '0:00';
+$('#samples').innerHTML = F.samples.map(t => `
+  <div class="sample player">
+    <button class="pbtn" aria-label="Play ${esc(t.title)}">${PLAY}</button>
+    <h4>${esc(t.title)}</h4>
+    <div class="bar"><i></i></div>
+    <div class="time">0:00</div>
+  </div>`).join('');
+$('#tracks').innerHTML = SITE.tracks.map(t => `
+  <div class="track player">
+    <button class="pbtn" aria-label="Play ${esc(t.title)}">${PLAY}</button>
+    <div class="tinfo">
+      <h3>${esc(t.title)}${t.tag ? `<span class="tag">${esc(t.tag)}</span>` : ''}</h3>
+      <div class="sub">${esc(t.sub||'')}</div>
+      <div class="bar"><i></i></div>
+    </div>
+    <div class="time">0:00</div>
+  </div>`).join('');
+const ALL = [...F.samples, ...SITE.tracks];
+const rows = [...document.querySelectorAll('.player')];
+function setUI(i, playing){
+  rows.forEach((r,k) => { r.classList.toggle('playing', k===i && playing); r.querySelector('.pbtn').innerHTML = (k===i && playing) ? PAUSE : PLAY; });
+}
+rows.forEach((r,i) => {
+  r.querySelector('.pbtn').onclick = () => {
+    if (current === i && !audio.paused) { audio.pause(); return; }
+    if (current !== i) { audio.src = ALL[i].file; current = i; }
+    audio.play().catch(() => { r.querySelector('.time').textContent = 'File not found'; setUI(-1,false); });
+  };
+  r.querySelector('.bar').onclick = e => {
+    if (current !== i || !audio.duration) return;
+    const b = e.currentTarget.getBoundingClientRect();
+    audio.currentTime = ((e.clientX - b.left) / b.width) * audio.duration;
+  };
+});
+audio.onplay  = () => setUI(current, true);
+audio.onpause = () => setUI(current, false);
+audio.onended = () => { setUI(current,false); rows[current].querySelector('.bar i').style.width = '0'; };
+audio.ontimeupdate = () => {
+  const r = rows[current]; if (!r) return;
+  r.querySelector('.bar i').style.width = (audio.currentTime / audio.duration * 100 || 0) + '%';
+  r.querySelector('.time').textContent = `${fmt(audio.currentTime)} / ${fmt(audio.duration)}`;
+};
+
+// Spotify embeds
+$('#spotify').innerHTML = SITE.spotify.map(u => {
+  const m = u.match(/open\.spotify\.com\/(?:intl-\w+\/)?(playlist|album|artist|track|show|episode)\/(\w+)/);
+  if (!m) return '';
+  return `<iframe src="https://open.spotify.com/embed/${m[1]}/${m[2]}" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
+}).join('');
+
+// About
+$('#photo').innerHTML = SITE.photo ? `<img src="${esc(SITE.photo)}" alt="${esc(SITE.name)}">` : `<div class="ph">Your photo here</div>`;
+$('#bio').innerHTML = SITE.bio.map(p => `<p>${esc(p)}</p>`).join('');
+$('#credits').innerHTML = SITE.credits.map(c => `<span>${esc(c)}</span>`).join('');
+
+// Contact & footer
+$('#contact-blurb').textContent = SITE.contactBlurb;
+$('#email-btn').href = `mailto:${SITE.email}`;
+$('#socials').innerHTML = SITE.socials.map(s => `<a class="btn" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join('');
+$('#footer').textContent = `© ${new Date().getFullYear()} ${SITE.name}. All music rights reserved.`;
+</script>
+</body>
+</html>
