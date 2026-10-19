@@ -302,7 +302,7 @@ document.querySelectorAll('.video .frame').forEach(f => f.addEventListener('clic
 // Featured films
 const FEATURES = SITE.features || (SITE.feature ? [SITE.feature] : []);
 $('#features').innerHTML = FEATURES.map(F => `
-  <div class="feature">
+  <div class="feature${F.wide ? ' wide' : ''}">
     <div class="poster">${F.poster ? `<img src="${esc(F.poster)}" alt="${esc(F.title)} poster" onerror="this.replaceWith('Poster image here')">` : 'Poster image here'}</div>
     <h3>${esc(F.title)}</h3>
     <p>${esc(F.note || '')}</p>
