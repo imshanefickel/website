@@ -135,6 +135,10 @@
     .poster img{max-height:450px}
     section{padding:64px 0}
   }
+    /* Center sample buttons under each poster */
+  .samples{display:flex;flex-wrap:wrap;justify-content:center}
+  .samples .sample{flex:0 1 calc(25% - 11px);min-width:0}
+  @media (max-width:760px){ .samples .sample{flex-basis:calc(50% - 7px)} }
 </style>
 </head>
 <body>
