@@ -61,7 +61,10 @@
   .poster img{width:100%;height:100%;object-fit:cover}
   .feature h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:1.9rem;margin-top:22px;line-height:1.2}
   .feature > p{color:var(--muted);font-size:.92rem}
-  .samples{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;max-width:860px;margin-top:24px}
+  .samples{display:grid  .samples{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;width:100%;max-width:860px;margin-top:24px}
+  .samples .sample{flex:0 1 calc(25% - 11px);min-width:0}
+  .feature.wide .poster{max-width:640px;aspect-ratio:auto;min-height:180px}
+  .feature.wide .poster img{height:auto};grid-template-columns:repeat(4,1fr);gap:14px;width:100%;max-width:860px;margin-top:24px}
   .sample{background:transparent;border:1px solid var(--line);border-radius:var(--radius);padding:18px 14px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 1px 6px rgba(60,40,10,.05);transition:border-color .2s,box-shadow .2s}
   .sample:hover{box-shadow:0 4px 14px rgba(60,40,10,.08)}
   .sample.playing{border-color:var(--accent)}
@@ -216,7 +219,6 @@ const SITE = {
       poster: "IMAGES/poster.jpg",
       title: "For The Love Of Strippers",
       note: "Original score · LoFi Hip Hop",
-      note: "Samples from the score",
       samples: [
         { title: "Cue 1 - Kickoff",       file: "AUDIO/Cue-1-opening.mp3" },
         { title: "Cue 3 - Turning Point", file: "AUDIO/Cue-3-Turning-Point.mp3" },
@@ -238,7 +240,7 @@ const SITE = {
   // Film & TV — any YouTube link works (watch, youtu.be, or shorts)
   videos: [
     { title: "Commercial Composer",        note: "Reel", url: "https://youtu.be/VpH2bcdg348?si=fHcpo6eXxYRaj3mm&t=1" },
-    { title: "Bumble",               note: "Commercial", url: "https://www.youtube.com/watch?v=-4dro8vd6f8" },
+    { title: "Hilton",               note: "Commercial", url: "https://www.youtube.com/watch?v=UnRaMk_-2ps" },
     { title: "Unit 55 — Short Film", note: "Short film", url: "https://youtu.be/jlxsHxvU2aQ" },
     
   ],
