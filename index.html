@@ -3,15 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shane LaRue — Composer & Songwriter</title>
-<meta name="description" content="Film composer and songwriter. Listen to scores, songs and reels.">
-    <meta property="og:title" content="Shane LaRue — Film Composer & Songwriter">
-    <meta property="og:description" content="Songs and music for film, television, and people.">
-       <meta property="og:image" content="https://shanelarue.com/share.jpg">
-   <meta property="og:image:width" content="1200">
-   <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://shanelarue.com">
-    <meta name="twitter:card" content="summary_large_image">
+<title>Shane LaRue | Film, TV &amp; Commercial Composer and Songwriter</title>
+<meta name="description" content="Shane LaRue is a composer and songwriter for film, television, and brands. Listen to original scores, campaign music for Hilton and Stella Artois, songs, and tracks available for licensing.">
+<link rel="canonical" href="https://shanelarue.com/">
+<meta name="author" content="Shane LaRue">
+<meta name="theme-color" content="#f8f5ef">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shane LaRue">
+<meta property="og:title" content="Shane LaRue — Film Composer &amp; Songwriter">
+<meta property="og:description" content="Songs and music for film, television, and people.">
+<meta property="og:image" content="https://shanelarue.com/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Shane LaRue — Film Composer &amp; Songwriter">
+<meta property="og:url" content="https://shanelarue.com/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shane LaRue",
+  "url": "https://shanelarue.com/",
+  "image": "https://shanelarue.com/IMAGES/ShaneHeadshot.jpeg",
+  "jobTitle": "Film Composer and Songwriter",
+  "description": "Composer and songwriter for film, television, and brand campaigns.",
+  "email": "mailto:laruecomposition@gmail.com",
+  "knowsAbout": ["Film scoring", "Television music", "Commercial music", "Songwriting", "Music licensing"],
+  "sameAs": [
+    "https://www.imdb.com/name/nm6299835/",
+    "https://instagram.com/shanelarue",
+    "https://open.spotify.com/playlist/3ANhiVi60nyelbW1qjMmwT"
+  ]
+}
+</script>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -43,22 +67,20 @@
   .links a:hover{color:var(--text)}
   .menu-btn{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
 
-  /* Hero */
-  .hero{min-height:78vh;display:flex;align-items:center;position:relative;overflow:hidden;
-    background:radial-gradient(ellipse at 70% 30%,rgba(200,150,80,.18),transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(130,150,190,.16),transparent 55%)}
-  .hero .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.25em;font-size:.78rem;font-weight:600}
-  .hero h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(3rem,9vw,6.5rem);line-height:1;margin:14px 0 18px}
-  .hero p{color:var(--muted);max-width:540px;font-size:1.1rem}
-  .cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--line);transition:.2s}
   .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
   .btn.primary:hover{background:var(--accent2)}
   .btn:not(.primary):hover{border-color:var(--muted)}
 
+  /* Keyboard focus */
+  a:focus-visible,button:focus-visible,.frame:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .brand{margin:0}
+
   /* Sections */
   section{padding:90px 0;border-top:1px solid var(--line)}
   .sec-head{margin-bottom:36px}
   .sec-head .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.2em;font-size:.75rem;font-weight:600}
+  .sec-intro{color:var(--muted);margin-top:8px;max-width:560px}
   .sec-head h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.1;margin-top:6px}
 
   /* Featured film: poster + samples */
@@ -79,7 +101,8 @@
   /* Videos */
   .grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
   .video{background:transparent;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 6px rgba(60,40,10,.05);transition:box-shadow .2s}
-  .video:hover{box-shadow:0 4px 14px rgba(60,40,10,.08)}  .video .frame{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer}
+  .video:hover{box-shadow:0 4px 14px rgba(60,40,10,.08)}
+  .video .frame{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer}
   .video .frame img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .25s}
   .video .frame:hover img{opacity:1}
   .video .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -106,7 +129,7 @@
 
   /* Spotify */
   .spot-grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
-  .spot-grid iframe{width:100%;height:352px;border:0;border-radius:var(--radius);background:var(--card)}
+  .spot-grid iframe{width:100%;height:352px;border:0;border-radius:var(--radius);background:transparent}
 
   /* About */
   .about{display:grid;grid-template-columns:320px 1fr;gap:50px;align-items:start}
@@ -152,9 +175,9 @@
 
 <header>
   <nav class="wrap">
-    <a href="#top" class="brand-wrap"><span class="brand" id="brand">Shane LaRue</span><span class="role" id="role">Film Composer &amp; Songwriter</span></a>
-    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
-    <ul class="links" onclick="this.classList.remove('open')">
+    <a href="#top" class="brand-wrap"><h1 class="brand" id="brand">Shane LaRue</h1><span class="role" id="role">Film Composer &amp; Songwriter</span></a>
+    <button class="menu-btn" aria-label="Menu" aria-controls="nav-links" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+    <ul class="links" id="nav-links" onclick="this.classList.remove('open')">
       <li><a href="#film">Film & TV</a></li>
       <li><a href="#playlists">Songs</a></li>
       <li><a href="#listen">Listen</a></li>
@@ -182,7 +205,7 @@
 
   <section id="listen">
     <div class="wrap">
-      <div class="sec-head"><div class="eyebrow">Ready for air</div><h2>Music in Search of a Home</h2><p style="color:var(--muted);margin-top:8px">Original tracks. Available for licensing. Updated regularly.</p></div>
+      <div class="sec-head"><div class="eyebrow">Ready for air</div><h2>Music in Search of a Home</h2><p class="sec-intro">Original tracks. Available for licensing. Updated regularly.</p></div>
       <div class="tracks" id="tracks"></div>
     </div>
   </section>
@@ -291,7 +314,6 @@ const PLAY  = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-
 const PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>';
 
 // Header & hero
-document.title = `${SITE.name} — ${SITE.eyebrow}`;
 $('#brand').textContent = SITE.name;
 $('#role').textContent = SITE.eyebrow;
 
@@ -300,28 +322,32 @@ function ytId(u){ const m = u.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{1
 $('#videos').innerHTML = SITE.videos.map(v => {
   const id = ytId(v.url);
   return `<div class="video">
-    <div class="frame" data-id="${esc(id)}" role="button" aria-label="Play ${esc(v.title)}">
-      <img src="https://i.ytimg.com/vi/${esc(id)}/hqdefault.jpg" alt="" loading="lazy">
+    <div class="frame" data-id="${esc(id)}" role="button" tabindex="0" aria-label="Play ${esc(v.title)} video">
+      <img src="https://i.ytimg.com/vi/${esc(id)}/hqdefault.jpg" alt="${esc(v.title)} — ${esc(v.note||'')}" loading="lazy" decoding="async">
       <div class="play-overlay"><span>${PLAY.replace('<svg','<svg style="width:26px;height:26px;color:#a8702a;margin-left:3px"')}</span></div>
     </div>
     <div class="meta"><h3>${esc(v.title)}</h3><p>${esc(v.note||'')}</p></div>
   </div>`;
 }).join('');
-document.querySelectorAll('.video .frame').forEach(f => f.addEventListener('click', () => {
-  if (f.querySelector('iframe')) return;
-  f.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${f.dataset.id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
-}));
+document.querySelectorAll('.video .frame').forEach(f => {
+  const play = () => {
+    if (f.querySelector('iframe')) return;
+    f.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${f.dataset.id}?autoplay=1&rel=0" title="${esc(f.getAttribute('aria-label'))}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  };
+  f.addEventListener('click', play);
+  f.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
+});
 
 // Featured films
 const FEATURES = SITE.features || (SITE.feature ? [SITE.feature] : []);
 $('#features').innerHTML = FEATURES.map(F => `
   <div class="feature${F.wide ? ' wide' : ''}">
-    <div class="poster">${F.poster ? `<img src="${esc(F.poster)}" alt="${esc(F.title)} poster" onerror="this.replaceWith('Poster image here')">` : 'Poster image here'}</div>
+    <div class="poster">${F.poster ? `<img src="${esc(F.poster)}" alt="${esc(F.title)} — ${esc(F.note || '')}" decoding="async" onerror="this.replaceWith('Poster image here')">` : 'Poster image here'}</div>
     <h3>${esc(F.title)}</h3>
     <p>${esc(F.note || '')}</p>
     <div class="samples">${F.samples.map(t => `
       <div class="sample player">
-        <button class="pbtn" aria-label="Play ${esc(t.title)}">${PLAY}</button>
+        <button class="pbtn" aria-label="Play ${esc(t.title)} from ${esc(F.title)}">${PLAY}</button>
         <h4>${esc(t.title)}</h4>
         <div class="bar"><i></i></div>
         <div class="time">0:00</div>
@@ -373,11 +399,11 @@ audio.ontimeupdate = () => {
 $('#spotify').innerHTML = SITE.spotify.map(u => {
   const m = u.match(/open\.spotify\.com\/(?:intl-\w+\/)?(playlist|album|artist|track|show|episode)\/(\w+)/);
   if (!m) return '';
-  return `<iframe src="https://open.spotify.com/embed/${m[1]}/${m[2]}" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
+  return `<iframe src="https://open.spotify.com/embed/${m[1]}/${m[2]}" title="Shane LaRue on Spotify" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
 }).join('');
 
 // About
-$('#photo').innerHTML = SITE.photo ? `<img src="${esc(SITE.photo)}" alt="${esc(SITE.name)}">` : `<div class="ph">Your photo here</div>`;
+$('#photo').innerHTML = SITE.photo ? `<img src="${esc(SITE.photo)}" alt="${esc(SITE.name)}, film composer and songwriter" loading="lazy" decoding="async">` : `<div class="ph">Your photo here</div>`;
 $('#bio').innerHTML = SITE.bio.map(p => `<p>${esc(p)}</p>`).join('');
 $('#credits').innerHTML = SITE.credits.map(c => `<span>${esc(c)}</span>`).join('');
 
